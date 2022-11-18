@@ -4,6 +4,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 ENV CC clang-6.0
 ENV CXX clang++-6.0
+ENV DEBIAN_FRONTEND=noninteractive
 
 ARG TON_GIT=https://github.com/SpyCheese/ton
 ARG TON_BRANCH=toncli-local
