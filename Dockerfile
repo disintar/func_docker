@@ -1,10 +1,14 @@
 FROM ubuntu:20.04 as builder
+
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake clang-6.0 openssl libssl-dev zlib1g-dev gperf wget git && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake clang-6.0 openssl libssl-dev zlib1g-dev gperf wget git software-properties-common npm && \
+    npm install npm@latest -g && \
+    npm install n -g && \
+    n latest && \
 	rm -rf /var/lib/apt/lists/*
+
 ENV CC clang-6.0
 ENV CXX clang++-6.0
-ENV DEBIAN_FRONTEND=noninteractive
 
 ARG TON_GIT=https://github.com/SpyCheese/ton
 ARG TON_BRANCH=toncli-local
@@ -62,13 +66,6 @@ RUN mkdir -p $HOME/$TONCLI_CONFD && \
 	echo "lite-client = /usr/local/bin/lite-client" >> $HOME/$TONCLI_CONFD/$TONCLI_CONF_NAME && \
 	toncli update_libs && \
 	mkdir -p /code
-
-# Add nodejs
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    npm && npm install npm@latest -g && \
-    npm install n -g && \
-    n latest
 
 COPY hello /code
 
