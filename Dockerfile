@@ -62,6 +62,13 @@ RUN mkdir -p $HOME/$TONCLI_CONFD && \
 	toncli update_libs && \
 	mkdir -p /code
 
+# Add nodejs
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    npm && npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
 COPY hello /code
 
 COPY toncli.sh /

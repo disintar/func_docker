@@ -1,5 +1,11 @@
 ﻿# Dockerfile for FunC testing
 
+---
+
+This fork extend default build with node, so you can create your dapps gh action more easy
+
+---
+
 This docker image should come in handy to run [toncli](https://github.com/disintar/toncli) with the [new tests support](https://github.com/disintar/toncli/blob/master/docs/advanced/func_tests_new.md).  
 Setting it all up manually could be cumbersome otherwise.  
 Inspired by [Dockerfile for the Open Network Node](https://github.com/ton-blockchain/ton/tree/master/docker).  
