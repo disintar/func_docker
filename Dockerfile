@@ -1,5 +1,5 @@
 FROM python:3.10-alpine as builder
-RUN apk add g++ clang musl-dev compiler-rt lld openssl-dev zlib-dev linux-headers cmake make git nodejs npm
+RUN apk add --update g++ clang musl-dev compiler-rt lld openssl-dev zlib-dev linux-headers cmake make git
 ENV CC clang
 ENV CXX clang++
 ENV LD lld
@@ -42,7 +42,7 @@ COPY --from=builder /toncli /toncli
 
 WORKDIR /
 
-RUN apk update && apk add compiler-rt libatomic openssl zlib
+RUN apk update && apk add compiler-rt libatomic openssl zlib nodejs npm
 
 RUN python -m pip install --upgrade pip && \
 	pip install -e toncli
