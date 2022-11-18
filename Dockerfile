@@ -1,10 +1,7 @@
 FROM ubuntu:20.04 as builder
 
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake clang-6.0 openssl libssl-dev zlib1g-dev gperf wget git software-properties-common npm && \
-    npm install npm@latest -g && \
-    npm install n -g && \
-    n latest && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake clang-6.0 openssl libssl-dev zlib1g-dev gperf wget git && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV CC clang-6.0
@@ -40,7 +37,10 @@ RUN mkdir build && \
 
 FROM ubuntu:20.04 as toncli
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y openssl wget python3 pip && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y openssl wget python3 pip software-properties-common npm && \
+    npm install npm@latest -g && \
+    npm install n -g && \
+    n latest && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /ton/build/lite-client/lite-client /usr/local/bin/
