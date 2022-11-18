@@ -8,8 +8,6 @@ This fork extend default build with node, so you can create your dapps gh action
 |--------------------------------------------------------------------------|---------|-------|
 | [disintar/toncli-local](https://hub.docker.com/r/disintar/toncli-local/) | slim    | 69mb  |
 | [disintar/toncli-local](https://hub.docker.com/r/disintar/toncli-local/) | m1-slim | 67mb  |
-| [disintar/toncli-local](https://hub.docker.com/r/disintar/toncli-local/) | latest  | 144mb |
-| [disintar/toncli-local](https://hub.docker.com/r/disintar/toncli-local/) | m1      | 135mb |
 
 ---
 
