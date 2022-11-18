@@ -1,5 +1,5 @@
 FROM python:3.10-alpine as builder
-RUN apk add g++ clang musl-dev compiler-rt lld openssl-dev zlib-dev linux-headers cmake make git
+RUN apk add g++ clang musl-dev compiler-rt lld openssl-dev zlib-dev linux-headers cmake make git nodejs npm
 ENV CC clang
 ENV CXX clang++
 ENV LD lld
